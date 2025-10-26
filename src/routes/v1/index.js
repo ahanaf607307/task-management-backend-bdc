@@ -4,7 +4,11 @@ const authRoute = require("./auth.routes");
 const userRoute = require("./user.routes");
 const docsRoute = require("./docs.routes");
 const profileRoute = require("./profile.routes");
-const subscriptionRoute = require("./subscription.routes")
+const subscriptionRoute = require("./subscription.routes");
+const TaskRouter = require("./task.route");
+const TaskCategoryRouter = require("./task.category.route");
+const TaskServiceRouter = require("./task.service.route");
+const TaskSubCategoryRouter = require("./task.subCategory.route");
 
 
 const router = express.Router();
@@ -25,6 +29,22 @@ const defaultRoutes = [
  {
     path: "/profiles",
     route: profileRoute,
+  },
+ {
+    path: "/tasks",
+    route: TaskRouter,
+  },
+ {
+    path: "/tasks/category",
+    route: TaskCategoryRouter,
+  },
+ {
+    path: "/tasks/sub-category",
+    route: TaskSubCategoryRouter,
+  },
+ {
+    path: "/tasks/category-service",
+    route: TaskServiceRouter,
   },
 
 ];

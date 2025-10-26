@@ -3,3 +3,7 @@ module.exports.emailService = require('./email.service');
 module.exports.tokenService = require('./token.service');
 module.exports.userService = require('./user.service');
 module.exports.subscriptionService = require("./subscription.service")
+module.exports.taskService = require("./tasks.service")
+module.exports.taskCategoryService = require("./task.category.service")
+module.exports.taskSubCategoryService = require("./task.subCategory.service")
+module.exports.taskServiceService = require("./task.service.service")

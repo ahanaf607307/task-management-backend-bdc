@@ -4,7 +4,7 @@ const bcrypt = require("bcryptjs");
 const { toJSON, paginate } = require("./plugins");
 const { roles } = require("../config/roles");
 
-const userSchema = mongoose.Schema(
+const userSchema = new mongoose.Schema(
   {
     fullName: {
       type: String,
@@ -16,8 +16,8 @@ const userSchema = mongoose.Schema(
       type: String,
       required: true,
       unique: true,
-      trim: true,
       lowercase: true,
+      trim: true,
       validate(value) {
         if (!validator.isEmail(value)) {
           throw new Error("Invalid email");
@@ -27,113 +27,53 @@ const userSchema = mongoose.Schema(
 
     password: {
       type: String,
-      trim: true,
+      required: true,
       minlength: 8,
+      trim: true,
       validate(value) {
         if (!value.match(/\d/) || !value.match(/[a-zA-Z]/)) {
-          throw new Error(
-            "Password must contain at least one letter and one number"
-          );
+          throw new Error("Password must contain at least one letter and one number");
         }
       },
     },
 
-    phone: {
-      type: String,
-      default: null,
-    },
+    phone: { type: String, default: null },
+    dob: { type: Date, default: null },
+    location: { type: String, default: null },
 
-    dob: {
-      type: Date,
-      default: null,
-    },
+    verificationCode: { type: String, default: null },
+    isEmailVerified: { type: Boolean, default: false },
+    isEmployeeVerified: { type: Boolean, default: false },
 
-    location: {
-      type: String,
-      default: null,
-    },
+    referalCode: { type: mongoose.Schema.Types.ObjectId, ref: "User", default: null },
+    referedIds: [{ type: mongoose.Schema.Types.ObjectId, ref: "User", default: [] }],
 
-    verificationCode: {
-      type: String,
-      default: null,
-    },
+    oneTimeCode: { type: String, default: null },
+    isResetPassword: { type: Boolean, default: false },
+    isDeleted: { type: Boolean, default: false },
 
-    isEmailVerified: {
-      type: Boolean,
-      default: false,
-    },
+    nidNumber: { type: String, default: null },
+    image: { type: String, default: "/uploads/users/user.png" },
 
-    oneTimeCode: {
-      type: String,
-      default: null,
-    },
-
-    isResetPassword: {
-      type: Boolean,
-      default: false,
-    },
-
-    isDeleted: {
-      type: Boolean,
-      default: false,
-    },
-
-    referBy: {
-      type: String,
-      default: null,
-    },
-
-    nidNumber: {
-      type: String,
-      default: null,
-    },
-
-    image: {
-      type: String,
-      default: "/uploads/users/user.png",
-    },
-
-    interest: {
-      type: [String],
-      default: [],
-    },
-
-    accountNumber: {
-      type: String,
-      default: null,
-    },
-
-    totalBalance: {
-      type: Number,
-      default: 0,
-    },
-
+    accountNumber: { type: String, default: null },
+    totalBalance: { type: Number, default: 0 },
+    pendingWithdraw: { type: Number, default: 0 },
     withdrawalHistory: {
       type: [mongoose.Schema.Types.Mixed],
       default: [],
     },
 
-    inviteLink: {
-      type: String,
-      default: null,
-    },
+    inviteLink: { type: String, default: null },
 
     role: {
       type: String,
-      enum: ["buyer" , "worker" , "admin" , "common" , "user" ],
-      default: "user",
+      enum: ["admin", "client", "employee", "common", "user"],
+      default: "employee",
     },
 
-
     subscription: {
-      subscriptionId: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "Subscription",
-      },
-      subscriptionExpirationDate: {
-        type: Date,
-        default: null,
-      },
+      subscriptionId: { type: mongoose.Schema.Types.ObjectId, ref: "Subscription" },
+      subscriptionExpirationDate: { type: Date, default: null },
       status: {
         type: String,
         enum: [
@@ -148,10 +88,7 @@ const userSchema = mongoose.Schema(
         ],
         default: "trialing",
       },
-      isSubscriptionTaken: {
-        type: Boolean,
-        default: false,
-      },
+      isSubscriptionTaken: { type: Boolean, default: false },
     },
 
     securitySettings: {
@@ -168,11 +105,7 @@ const userSchema = mongoose.Schema(
         match: [/^\+?[1-9]\d{1,14}$/, "Invalid phone number format"],
         default: null,
       },
-      securityQuestion: {
-        type: String,
-        trim: true,
-        default: null,
-      },
+      securityQuestion: { type: String, trim: true, default: null },
       securityAnswer: {
         type: String,
         required: function () {
@@ -180,21 +113,15 @@ const userSchema = mongoose.Schema(
         },
         set: (answer) =>
           answer
-            ? require("crypto")
-                .createHash("sha256")
-                .update(answer)
-                .digest("hex")
+            ? crypto.createHash("sha256").update(answer).digest("hex")
             : null,
         select: false,
         default: null,
       },
     },
   },
-  {
-    timestamps: true,
-  }
+  { timestamps: true }
 );
-
 // add plugin that converts mongoose to json
 userSchema.plugin(toJSON);
 userSchema.plugin(paginate);

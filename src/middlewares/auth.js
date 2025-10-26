@@ -3,7 +3,6 @@ const httpStatus = require("http-status");
 const ApiError = require("../utils/ApiError");
 const { roleRights } = require("../config/roles");
 const jwt = require("jsonwebtoken");
-const { Activity } = require("../models");
 
 const verifyCallback =
   (req, resolve, reject, requiredRights) => async (err, user, info) => {
@@ -13,10 +12,7 @@ const verifyCallback =
       );
     }
     req.user = user;
-
-
     const { authorization } = req.headers;
-  
     let token;
     let activity;
     let decodedData;
@@ -27,15 +23,26 @@ const verifyCallback =
 
     }
 
-    if (requiredRights.length) {
-      const userRights = roleRights.get(user.role);
-      const hasRequiredRights = requiredRights.every((requiredRight) =>
-        userRights.includes(requiredRight)
-      );
-      if (!hasRequiredRights && req.params.userId !== user.id) {
-        return reject(new ApiError(httpStatus.FORBIDDEN, "Forbidden"));
-      }
-    }
+    // if (requiredRights.length) {
+    //   const userRights = roleRights.get(user.role);
+    //   const hasRequiredRights = requiredRights.every((requiredRight) =>
+    //     userRights.includes(requiredRight)
+    //   );
+    //   if (!hasRequiredRights && req.params.userId !== user.id) {
+    //     return reject(new ApiError(httpStatus.FORBIDDEN, "Forbidden"));
+    //   }
+    // }
+
+    if (requiredRights.length > 0) {
+  const userRights = roleRights.get(user.role) || []; // ✅ safe fallback
+  const hasRequiredRights = requiredRights.every((requiredRight) =>
+    userRights.includes(requiredRight)
+  );
+
+  if (!hasRequiredRights && req.params.userId !== user._id.toString()) {
+    return reject(new ApiError(httpStatus.FORBIDDEN, "Forbidden"));
+  }
+}
 
     resolve();
   };

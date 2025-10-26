@@ -1,6 +1,5 @@
 const Joi = require("joi");
 const { objectId } = require("./custom.validation");
-
 const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
 
 const subscriptionStatusEnum = [
@@ -24,20 +23,29 @@ const createUser = {
     phone: Joi.string().allow(null, ""),
     dob: Joi.date().allow(null),
     location: Joi.string().allow(null, ""),
+
     verificationCode: Joi.string().allow(null, ""),
     isEmailVerified: Joi.boolean(),
+    isEmployeeVerified: Joi.boolean(),
+
+    referalCode: Joi.string().custom(objectId).allow(null),
+    referedIds: Joi.array().items(Joi.string().custom(objectId)).default([]),
+
     oneTimeCode: Joi.string().allow(null, ""),
     isResetPassword: Joi.boolean(),
     isDeleted: Joi.boolean(),
-    referBy: Joi.string().allow(null, ""),
+
     nidNumber: Joi.string().allow(null, ""),
-    image: Joi.string().uri().allow(null, ""),
-    interest: Joi.array().items(Joi.string()).default([]),
+    image: Joi.string().allow(null, ""),
     accountNumber: Joi.string().allow(null, ""),
     totalBalance: Joi.number(),
+    pendingWithdraw: Joi.number(),
     withdrawalHistory: Joi.array().items(Joi.object()).default([]),
-    inviteLink: Joi.string().uri().allow(null, ""),
-    role: Joi.string().valid("buyer", "worker", "admin", "common" , "user").default("user"),
+    inviteLink: Joi.string().allow(null, ""),
+
+    role: Joi.string()
+      .valid("admin", "client", "employee", "common", "user")
+      .default("employee"),
 
     subscription: Joi.object({
       subscriptionId: Joi.string().custom(objectId).allow(null),
@@ -53,7 +61,7 @@ const createUser = {
         .message("Invalid phone number format")
         .allow(null, ""),
       securityQuestion: Joi.string().allow(null, ""),
-      securityAnswer: Joi.string().allow(null, ""), // hash handled on backend
+      securityAnswer: Joi.string().allow(null, ""),
     }).allow(null),
   }),
 };
@@ -82,7 +90,7 @@ const updateUser = {
       totalBalance: Joi.number(),
       withdrawalHistory: Joi.array().items(Joi.object()),
       inviteLink: Joi.string().uri().allow(null, ""),
-      role: Joi.string().valid("buyer", "worker", "admin", "common" , "user"),
+       role: Joi.string().valid("admin", "client", "employee", "common" ).default("employee"),
 
       subscription: Joi.object({
         subscriptionId: Joi.string().custom(objectId).allow(null),
@@ -120,7 +128,7 @@ const getUsers = {
   query: Joi.object().keys({
     fullName: Joi.string(),
     email: Joi.string(),
-    role: Joi.string().valid("buyer", "worker", "admin", "common" , "user"),
+   role: Joi.string().valid("admin", "client", "employee", ),
     sortBy: Joi.string(),
     limit: Joi.number().integer(),
     page: Joi.number().integer(),

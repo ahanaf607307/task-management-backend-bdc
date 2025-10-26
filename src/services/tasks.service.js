@@ -1,77 +1,105 @@
 const httpStatus = require("http-status");
 const ApiError = require("../utils/ApiError");
-const logger = require("../config/logger");
 const { Tasks } = require("../models");
-const { userService } = require(".");
 
 const createTask = async (data) => {
-
   const task = await Tasks.create(data);
   return task;
 };
 
-const queryTasks = async (filter, options) => {
-  const { limit = 10, page = 1 } = options; // Set default limit and page values
+// const getTasksService = async (filter = {}, options = {}, user) => {
+//   try {
+//     const query = { isDeleted: false };
 
-  const count = await Tasks.countDocuments(filter);
+//     // Filter by user if provided
+//     if (user && !filter.createdBy) {
+//       query.createdBy = user._id;
+//     }
 
-  const totalPages = Math.ceil(count / limit); // Calculate total pages
-  const skip = (page - 1) * limit; // Calculate skip value
+//     // Dynamic filters
+//     for (const key of Object.keys(filter)) {
+//       if (filter[key] !== "") {
+//         if (key === "title") {
+//           query[key] = { $regex: filter[key], $options: "i" };
+//         } else {
+//           query[key] = filter[key];
+//         }
+//       }
+//     }
 
-  const crews = await Tasks.find(filter)
+//     const limit = options.limit ? parseInt(options.limit, 10) : 10;
+//     const page = options.page ? parseInt(options.page, 10) : 1;
+//     const sort = options.sortBy ? JSON.parse(options.sortBy) : { createdAt: -1 };
 
-  const result = {
-    data: crews,
-    page: parseInt(page),
-    limit: parseInt(limit),
-    totalPages,
-    totalResults: count,
-  };
+//     // Use aggregate to allow proper population
+//     const aggregate = Tasks.aggregate([
+//       { $match: query },
+//       { $sort: sort },
 
-  if (!crews || !crews.length) {
-    throw new ApiError(httpStatus.NOT_FOUND, "No Tasks found");
-  }
+//       // Lookup createdBy
+//       {
+//         $lookup: {
+//           from: "users",
+//           localField: "createdBy",
+//           foreignField: "_id",
+//           as: "createdBy",
+//         },
+//       },
+//       { $unwind: { path: "$createdBy", preserveNullAndEmptyArrays: true } },
 
-  return result;
-};
+//       // Lookup category
+//       {
+//         $lookup: {
+//           from: "categories",
+//           localField: "categoryId",
+//           foreignField: "_id",
+//           as: "category",
+//         },
+//       },
+//       { $unwind: { path: "$category", preserveNullAndEmptyArrays: true } },
 
-const getTaskById = async (id) => {
-  const task = await Tasks.findById(id)
-    .populate("crewLeaders", "_id username image") // Assuming username is a field in the User model
-    .populate("affiliations", "_id name");
-  if (!task) {
-    throw new ApiError(httpStatus.NOT_FOUND, "Task not found");
-  }
-  return task;
-};
+//       // Lookup subCategory
+//       {
+//         $lookup: {
+//           from: "subcategories",
+//           localField: "subCategoryId",
+//           foreignField: "_id",
+//           as: "subCategory",
+//         },
+//       },
+//       { $unwind: { path: "$subCategory", preserveNullAndEmptyArrays: true } },
 
-const deleteTaskById = async (id) => {
-  const task = await Tasks.findByIdAndDelete(id);
-  if (!task) {
-    throw new ApiError(httpStatus.NOT_FOUND, "Task not found");
-  }
-  return task;
-};
+//       // Lookup service
+//       {
+//         $lookup: {
+//           from: "services",
+//           localField: "serviceId",
+//           foreignField: "_id",
+//           as: "service",
+//         },
+//       },
+//       { $unwind: { path: "$service", preserveNullAndEmptyArrays: true } },
+//     ]);
 
-const updateTaskById = async (id, bodyData, image) => {
-  const task = await getTasksById(id);
-  if (!task) {
-    throw new ApiError(httpStatus.NOT_FOUND, "Task not found");
-  }
-  if (image) {
-    task.image = image;
-  }
+//     // Paginate using aggregatePaginate
+//     const tasks = await Tasks.paginate(aggregate, { page, limit });
 
-  Object.assign(task, bodyData);
-  await task.save();
-  return task;
+//     return tasks;
+//   } catch (error) {
+//     throw new ApiError(`Error fetching tasks: ${error.message}`);
+//   }
+// };
+
+const getAllTasksService = async () => {
+  return await Tasks.find()
+    .populate('createdBy', 'name email')
+    .populate('categoryId', 'category')
+    .populate('subCategoryId', 'subCategory')
+    .populate('serviceId', 'service');
 };
 
 
 module.exports = {
   createTask,
-  queryTasks,
-  getTaskById,
-  deleteTaskById,
-  updateTaskById
+  getAllTasksService
 };
