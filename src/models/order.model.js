@@ -7,7 +7,7 @@ const orderSchema = new mongoose.Schema({
   quantity : {type : Number , required:true, default : 1},
   addLink : {type : String , required:true},
   totalPayable : {type : Number , required:true},
-  paymentStatus : {type : String , enum : ["pending" , "completed"], default : "pending"}
+  paymentStatus : {type : String , enum : ["pending" , "accepted"], default : "pending"}
 }, { timestamps: true });
 
 const Order = mongoose.model("Order", orderSchema);

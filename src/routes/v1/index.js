@@ -10,6 +10,7 @@ const TaskCategoryRouter = require("./task.category.route");
 const TaskServiceRouter = require("./task.service.route");
 const TaskSubCategoryRouter = require("./task.subCategory.route");
 const OrderRouter = require("./order.route");
+const TransactionRouter = require("./transaction.route");
 
 
 const router = express.Router();
@@ -50,6 +51,10 @@ const defaultRoutes = [
  {
     path: "/tasks/order",
     route: OrderRouter,
+  },
+ {
+    path: "/tasks/transaction",
+    route: TransactionRouter,
   },
 
 ];

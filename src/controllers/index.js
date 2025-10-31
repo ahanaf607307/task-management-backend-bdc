@@ -6,5 +6,6 @@ module.exports.taskCategoryController = require("./task.category.controller")
 module.exports.taskSubCategoryController = require("./task.subCategory.controller")
 module.exports.taskServiceController = require("./task.service.controller")
 module.exports.orderController = require("./order.controller")
+module.exports.transactionController = require("./transaction.controller")
 
 
