@@ -10,7 +10,7 @@ const { taskServiceController } = require("../../controllers");
 const TaskServiceRouter = express.Router();
 
 TaskServiceRouter.route("/create").post(auth("admin"),  taskServiceController.createTaskService);
-// TaskServiceRouter.route("/all").get(auth("common"), taskController.getTask);
+TaskServiceRouter.route("/all").get(auth("common"), taskServiceController.getTaskController);
 
 
   

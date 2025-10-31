@@ -60,6 +60,7 @@ app.use(status());
 // v1 api routes
 app.use("/api/v1", routes);
 
+
 //testing API is alive
 app.get("/test", (req, res) => {
   let userIP =

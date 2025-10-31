@@ -7,8 +7,20 @@ const logger = require("./config/logger");
 const myIp = process.env.BACKEND_IP;
 
 let server;
-mongoose.connect(config.mongoose.url, config.mongoose.options).then(() => {
+mongoose.connect(config.mongoose.url, config.mongoose.options).then(async () => {
   logger.info("Connected to MongoDB");
+   // Drop unique index on 'service' field
+  try {
+    await mongoose.connection.collection('services').dropIndex('service_1');
+    logger.info("Unique index on 'service' dropped successfully");
+  } catch (err) {
+    if (err.codeName === 'IndexNotFound') {
+      logger.info("Index 'service_1' does not exist, nothing to drop");
+    } else {
+      logger.error("Error dropping index:", err);
+    }
+  }
+
   server = app.listen(config.port, myIp, () => {
     // logger.info(`Listening to port ${config.port}`);
     logger.info(`Listening to ip http://${myIp}:${config.port}`);

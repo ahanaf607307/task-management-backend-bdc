@@ -19,9 +19,33 @@ try {
     })
   );
 } catch (error) {
+  console.log('from task service create ->',error  )
       res.status(httpStatus.BAD_REQUEST).json(
     response({
-      message: "Task service creating failed",
+      message: `Task service creating failed ${error}`,
+      status: "NOT OK",
+      statusCode: httpStatus.BAD_REQUEST,
+    })
+  );
+}
+
+});
+const getTaskController = catchAsync(async (req, res) => {
+try {
+
+  const tasks = await taskServiceService.getTaskService();
+  res.status(httpStatus.CREATED).json(
+    response({
+      message: "Task service retrive successfully",
+      status: "OK",
+      statusCode: httpStatus.CREATED,
+      data: tasks,
+    })
+  );
+} catch (error) {
+      res.status(httpStatus.BAD_REQUEST).json(
+    response({
+      message: "Task service retrive failed",
       status: "NOT OK",
       statusCode: httpStatus.BAD_REQUEST,
     })
@@ -34,5 +58,6 @@ try {
 
 module.exports = {
   createTaskService,
+  getTaskController
 
 };

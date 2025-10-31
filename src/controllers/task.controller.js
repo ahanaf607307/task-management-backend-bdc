@@ -31,24 +31,6 @@ try {
 
 });
 
-
-// const getTasks = catchAsync(async (req, res) => {
-//   // Pick filters and options from query
-//     const filter = pick(req.query, ["status", "categoryId", "subCategoryId", "serviceId", "title"]);
-//   const options = pick(req.query, ["sortBy", "limit", "page"]);
-
-//   // Pass user if needed for filtering by createdBy
-//   const result = await taskService.getTasksService(filter, options, req.user);
-
-//   res.status(httpStatus.OK).json(
-//     response({
-//       message: "All Tasks",
-//       status: "OK",
-//       statusCode: httpStatus.OK,
-//       data: result,
-//     })
-//   );
-// });
 const getTasks = async (req, res) => {
   try {
     const tasks = await taskService.getAllTasksService();

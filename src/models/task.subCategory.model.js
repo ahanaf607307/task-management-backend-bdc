@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 
 const subcategorySchema = new mongoose.Schema(
   {
-    subCategory: { type: [String], required: true },
+    subCategory: { type: String, required: true ,     unique : true, },
 categoryId: { type: mongoose.Schema.Types.ObjectId, ref: "Category", required: true } ,
     createdBy: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
   },
