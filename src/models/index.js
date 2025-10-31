@@ -5,6 +5,7 @@ module.exports.Tasks = require("./task.model");
 module.exports.TaskCategory = require("./task.category.model");
 module.exports.TaskSubCategory = require("./task.subCategory.model");
 module.exports.TaskService = require("./task.service.model");
+module.exports.OrderModel = require("./order.model");
 
 module.exports.Notification = require('./notification.model');
 module.exports.TermsAndCondition = require('./termsConditions.model');
