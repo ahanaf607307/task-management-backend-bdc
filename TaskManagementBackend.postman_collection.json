@@ -3,7 +3,8 @@
 		"_postman_id": "c10c3ccd-2f4a-4b80-8cdd-b5d876c5e234",
 		"name": "TaskManagementBackend",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "41941282"
+		"_exporter_id": "41941282",
+		"_collection_link": "https://taskteam-8032.postman.co/workspace/TaskTeam-Workspace~2858fdc1-7f7c-48d6-83f0-26ccdcd0a327/collection/41941282-c10c3ccd-2f4a-4b80-8cdd-b5d876c5e234?action=share&source=collection_link&creator=41941282"
 	},
 	"item": [
 		{
@@ -164,7 +165,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"email\": \"ahanaf607307@gmail.com\",\r\n    \"code\": \"113110\"\r\n}",
+									"raw": "{\r\n    \"email\": \"a@gmail.com\",\r\n    \"code\": \"481020\"\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -348,7 +349,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"email\": \"ahanaf607307@gmail.com\",\r\n    \"password\": \"1qazxcvb\",\r\n    \"fcmToken\": \"The firebase FCM token\" // // onlly uee for push notification / mobile focus *\r\n}",
+									"raw": "{\r\n    \"email\": \"a@gmail.com\",\r\n    \"password\": \"1qazxcvb\",\r\n    \"fcmToken\": \"The firebase FCM token\" // // onlly uee for push notification / mobile focus *\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -2004,7 +2005,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"fullName\" : \"Ahanaf Mubasshir\",\r\n  \"email\": \"a@gmail.com\",\r\n  \"password\": \"1qazxcvb\"\r\n}\r\n",
+									"raw": "{\r\n    \"fullName\" : \"Client Mubasshir\",\r\n  \"email\": \"client@gmail.com\",\r\n  \"password\": \"1qazxcvb\"\r\n}\r\n",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -2149,7 +2150,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"email\": \"ahanaf607307@gmail.com\",\r\n    \"code\": \"113110\"\r\n}",
+									"raw": "{\r\n    \"email\": \"client@gmail.com\",\r\n    \"code\": \"269645\"\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -2333,7 +2334,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"email\": \"ahanaf607307@gmail.com\",\r\n    \"password\": \"1qazxcvb\",\r\n    \"fcmToken\": \"The firebase FCM token\" // // onlly uee for push notification / mobile focus *\r\n}",
+									"raw": "{\r\n    \"email\": \"client@gmail.com\",\r\n    \"password\": \"1qazxcvb\",\r\n    \"fcmToken\": \"The firebase FCM token\" // // onlly uee for push notification / mobile focus *\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -2613,6 +2614,162 @@
 									],
 									"cookie": [],
 									"body": "{\n    \"code\": 200,\n    \"message\": \"Email Sent\",\n    \"data\": {\n        \"attributes\": {}\n    }\n}"
+								}
+							]
+						},
+						{
+							"name": "Task Service Copy",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{accessToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"service\": [\"Organic Like\" , \"Comments\" , \"Share\"],\r\n  \"subCategoryId\": \"68fe72babd1d9918bc96d765\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/api/v1/tasks/category-service/create",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"tasks",
+										"category-service",
+										"create"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Success",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"firstName\": \"Md. Shadat\",\r\n    \"lastName\": \"Hossain\",\r\n    \"email\": \"shadathossan3500@gmail.com\",\r\n    \"password\": \"1qazxsw2\",\r\n    \"role\": \"user\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{url}}/api/v1/auth/register",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"auth",
+												"register"
+											]
+										}
+									},
+									"status": "Created",
+									"code": 201,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Security-Policy",
+											"value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+										},
+										{
+											"key": "Cross-Origin-Opener-Policy",
+											"value": "same-origin"
+										},
+										{
+											"key": "Cross-Origin-Resource-Policy",
+											"value": "same-origin"
+										},
+										{
+											"key": "Origin-Agent-Cluster",
+											"value": "?1"
+										},
+										{
+											"key": "Referrer-Policy",
+											"value": "no-referrer"
+										},
+										{
+											"key": "Strict-Transport-Security",
+											"value": "max-age=15552000; includeSubDomains"
+										},
+										{
+											"key": "X-Content-Type-Options",
+											"value": "nosniff"
+										},
+										{
+											"key": "X-DNS-Prefetch-Control",
+											"value": "off"
+										},
+										{
+											"key": "X-Download-Options",
+											"value": "noopen"
+										},
+										{
+											"key": "X-Frame-Options",
+											"value": "SAMEORIGIN"
+										},
+										{
+											"key": "X-Permitted-Cross-Domain-Policies",
+											"value": "none"
+										},
+										{
+											"key": "X-XSS-Protection",
+											"value": "0"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "101"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"65-w8K9sef3s2f1jZeAnQgMnuKWxNE\""
+										},
+										{
+											"key": "Vary",
+											"value": "Accept-Encoding"
+										},
+										{
+											"key": "Date",
+											"value": "Sat, 15 Feb 2025 11:53:36 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"code\": 201,\n    \"message\": \"Thank you for registering. Please verify your email\",\n    \"data\": {\n        \"attributes\": {}\n    }\n}"
 								}
 							]
 						},
@@ -3979,6 +4136,169 @@
 					"item": [
 						{
 							"name": "Get Tasks",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{accessToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/api/v1/tasks/get-all-tasks",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"tasks",
+										"get-all-tasks"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Success",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"firstName\": \"Md. Shadat\",\r\n    \"lastName\": \"Hossain\",\r\n    \"email\": \"shadathossan3500@gmail.com\",\r\n    \"password\": \"1qazxsw2\",\r\n    \"role\": \"user\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{url}}/api/v1/auth/register",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"auth",
+												"register"
+											]
+										}
+									},
+									"status": "Created",
+									"code": 201,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Security-Policy",
+											"value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+										},
+										{
+											"key": "Cross-Origin-Opener-Policy",
+											"value": "same-origin"
+										},
+										{
+											"key": "Cross-Origin-Resource-Policy",
+											"value": "same-origin"
+										},
+										{
+											"key": "Origin-Agent-Cluster",
+											"value": "?1"
+										},
+										{
+											"key": "Referrer-Policy",
+											"value": "no-referrer"
+										},
+										{
+											"key": "Strict-Transport-Security",
+											"value": "max-age=15552000; includeSubDomains"
+										},
+										{
+											"key": "X-Content-Type-Options",
+											"value": "nosniff"
+										},
+										{
+											"key": "X-DNS-Prefetch-Control",
+											"value": "off"
+										},
+										{
+											"key": "X-Download-Options",
+											"value": "noopen"
+										},
+										{
+											"key": "X-Frame-Options",
+											"value": "SAMEORIGIN"
+										},
+										{
+											"key": "X-Permitted-Cross-Domain-Policies",
+											"value": "none"
+										},
+										{
+											"key": "X-XSS-Protection",
+											"value": "0"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "101"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"65-w8K9sef3s2f1jZeAnQgMnuKWxNE\""
+										},
+										{
+											"key": "Vary",
+											"value": "Accept-Encoding"
+										},
+										{
+											"key": "Date",
+											"value": "Sat, 15 Feb 2025 11:53:36 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"code\": 201,\n    \"message\": \"Thank you for registering. Please verify your email\",\n    \"data\": {\n        \"attributes\": {}\n    }\n}"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "Order",
+					"item": [
+						{
+							"name": "Create Order",
 							"request": {
 								"auth": {
 									"type": "bearer",
@@ -3994,7 +4314,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n  \"subCategory\": [\"Organic Like\" , \"Comments\" , \"Share\"],\r\n  \"categoryId\": \"68fe61cddb9f71d4a77fbdd7\"\r\n}\r\n",
+									"raw": "{\r\n    \"category\" : \"Socail Media\"\r\n}\r\n",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -4002,7 +4322,7 @@
 									}
 								},
 								"url": {
-									"raw": "{{url}}/api/v1/tasks/category-service/create",
+									"raw": "{{url}}/api/v1/tasks/category/create",
 									"host": [
 										"{{url}}"
 									],
@@ -4010,7 +4330,480 @@
 										"api",
 										"v1",
 										"tasks",
-										"category-service",
+										"category",
+										"create"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Success",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"firstName\": \"Md. Shadat\",\r\n    \"lastName\": \"Hossain\",\r\n    \"email\": \"shadathossan3500@gmail.com\",\r\n    \"password\": \"1qazxsw2\",\r\n    \"role\": \"user\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{url}}/api/v1/auth/register",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"auth",
+												"register"
+											]
+										}
+									},
+									"status": "Created",
+									"code": 201,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Security-Policy",
+											"value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+										},
+										{
+											"key": "Cross-Origin-Opener-Policy",
+											"value": "same-origin"
+										},
+										{
+											"key": "Cross-Origin-Resource-Policy",
+											"value": "same-origin"
+										},
+										{
+											"key": "Origin-Agent-Cluster",
+											"value": "?1"
+										},
+										{
+											"key": "Referrer-Policy",
+											"value": "no-referrer"
+										},
+										{
+											"key": "Strict-Transport-Security",
+											"value": "max-age=15552000; includeSubDomains"
+										},
+										{
+											"key": "X-Content-Type-Options",
+											"value": "nosniff"
+										},
+										{
+											"key": "X-DNS-Prefetch-Control",
+											"value": "off"
+										},
+										{
+											"key": "X-Download-Options",
+											"value": "noopen"
+										},
+										{
+											"key": "X-Frame-Options",
+											"value": "SAMEORIGIN"
+										},
+										{
+											"key": "X-Permitted-Cross-Domain-Policies",
+											"value": "none"
+										},
+										{
+											"key": "X-XSS-Protection",
+											"value": "0"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "101"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"65-w8K9sef3s2f1jZeAnQgMnuKWxNE\""
+										},
+										{
+											"key": "Vary",
+											"value": "Accept-Encoding"
+										},
+										{
+											"key": "Date",
+											"value": "Sat, 15 Feb 2025 11:53:36 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"code\": 201,\n    \"message\": \"Thank you for registering. Please verify your email\",\n    \"data\": {\n        \"attributes\": {}\n    }\n}"
+								}
+							]
+						},
+						{
+							"name": "Get Orders",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{accessToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"category\" : \"Socail Media\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/api/v1/tasks/category/create",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"tasks",
+										"category",
+										"create"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Success",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"firstName\": \"Md. Shadat\",\r\n    \"lastName\": \"Hossain\",\r\n    \"email\": \"shadathossan3500@gmail.com\",\r\n    \"password\": \"1qazxsw2\",\r\n    \"role\": \"user\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{url}}/api/v1/auth/register",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"auth",
+												"register"
+											]
+										}
+									},
+									"status": "Created",
+									"code": 201,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Security-Policy",
+											"value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+										},
+										{
+											"key": "Cross-Origin-Opener-Policy",
+											"value": "same-origin"
+										},
+										{
+											"key": "Cross-Origin-Resource-Policy",
+											"value": "same-origin"
+										},
+										{
+											"key": "Origin-Agent-Cluster",
+											"value": "?1"
+										},
+										{
+											"key": "Referrer-Policy",
+											"value": "no-referrer"
+										},
+										{
+											"key": "Strict-Transport-Security",
+											"value": "max-age=15552000; includeSubDomains"
+										},
+										{
+											"key": "X-Content-Type-Options",
+											"value": "nosniff"
+										},
+										{
+											"key": "X-DNS-Prefetch-Control",
+											"value": "off"
+										},
+										{
+											"key": "X-Download-Options",
+											"value": "noopen"
+										},
+										{
+											"key": "X-Frame-Options",
+											"value": "SAMEORIGIN"
+										},
+										{
+											"key": "X-Permitted-Cross-Domain-Policies",
+											"value": "none"
+										},
+										{
+											"key": "X-XSS-Protection",
+											"value": "0"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "101"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"65-w8K9sef3s2f1jZeAnQgMnuKWxNE\""
+										},
+										{
+											"key": "Vary",
+											"value": "Accept-Encoding"
+										},
+										{
+											"key": "Date",
+											"value": "Sat, 15 Feb 2025 11:53:36 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"code\": 201,\n    \"message\": \"Thank you for registering. Please verify your email\",\n    \"data\": {\n        \"attributes\": {}\n    }\n}"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "Transaction",
+					"item": [
+						{
+							"name": "Create Transaction",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{accessToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"category\" : \"Socail Media\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/api/v1/tasks/category/create",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"tasks",
+										"category",
+										"create"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Success",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"firstName\": \"Md. Shadat\",\r\n    \"lastName\": \"Hossain\",\r\n    \"email\": \"shadathossan3500@gmail.com\",\r\n    \"password\": \"1qazxsw2\",\r\n    \"role\": \"user\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{url}}/api/v1/auth/register",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"auth",
+												"register"
+											]
+										}
+									},
+									"status": "Created",
+									"code": 201,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Security-Policy",
+											"value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+										},
+										{
+											"key": "Cross-Origin-Opener-Policy",
+											"value": "same-origin"
+										},
+										{
+											"key": "Cross-Origin-Resource-Policy",
+											"value": "same-origin"
+										},
+										{
+											"key": "Origin-Agent-Cluster",
+											"value": "?1"
+										},
+										{
+											"key": "Referrer-Policy",
+											"value": "no-referrer"
+										},
+										{
+											"key": "Strict-Transport-Security",
+											"value": "max-age=15552000; includeSubDomains"
+										},
+										{
+											"key": "X-Content-Type-Options",
+											"value": "nosniff"
+										},
+										{
+											"key": "X-DNS-Prefetch-Control",
+											"value": "off"
+										},
+										{
+											"key": "X-Download-Options",
+											"value": "noopen"
+										},
+										{
+											"key": "X-Frame-Options",
+											"value": "SAMEORIGIN"
+										},
+										{
+											"key": "X-Permitted-Cross-Domain-Policies",
+											"value": "none"
+										},
+										{
+											"key": "X-XSS-Protection",
+											"value": "0"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "101"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"65-w8K9sef3s2f1jZeAnQgMnuKWxNE\""
+										},
+										{
+											"key": "Vary",
+											"value": "Accept-Encoding"
+										},
+										{
+											"key": "Date",
+											"value": "Sat, 15 Feb 2025 11:53:36 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"code\": 201,\n    \"message\": \"Thank you for registering. Please verify your email\",\n    \"data\": {\n        \"attributes\": {}\n    }\n}"
+								}
+							]
+						},
+						{
+							"name": "Get Transaction",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{accessToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"category\" : \"Socail Media\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/api/v1/tasks/category/create",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"tasks",
+										"category",
 										"create"
 									]
 								}
@@ -4144,296 +4937,6 @@
 					"name": "Auth",
 					"item": [
 						{
-							"name": "Ragistation",
-							"request": {
-								"method": "POST",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\r\n    \"fullName\" : \"Ahanaf Mubasshir\",\r\n  \"email\": \"a@gmail.com\",\r\n  \"password\": \"1qazxcvb\"\r\n}\r\n",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{url}}/api/v1/auth/register",
-									"host": [
-										"{{url}}"
-									],
-									"path": [
-										"api",
-										"v1",
-										"auth",
-										"register"
-									]
-								}
-							},
-							"response": [
-								{
-									"name": "Success",
-									"originalRequest": {
-										"method": "POST",
-										"header": [],
-										"body": {
-											"mode": "raw",
-											"raw": "{\r\n    \"firstName\": \"Md. Shadat\",\r\n    \"lastName\": \"Hossain\",\r\n    \"email\": \"shadathossan3500@gmail.com\",\r\n    \"password\": \"1qazxsw2\",\r\n    \"role\": \"user\"\r\n}",
-											"options": {
-												"raw": {
-													"language": "json"
-												}
-											}
-										},
-										"url": {
-											"raw": "{{url}}/api/v1/auth/register",
-											"host": [
-												"{{url}}"
-											],
-											"path": [
-												"api",
-												"v1",
-												"auth",
-												"register"
-											]
-										}
-									},
-									"status": "Created",
-									"code": 201,
-									"_postman_previewlanguage": "json",
-									"header": [
-										{
-											"key": "Content-Security-Policy",
-											"value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
-										},
-										{
-											"key": "Cross-Origin-Opener-Policy",
-											"value": "same-origin"
-										},
-										{
-											"key": "Cross-Origin-Resource-Policy",
-											"value": "same-origin"
-										},
-										{
-											"key": "Origin-Agent-Cluster",
-											"value": "?1"
-										},
-										{
-											"key": "Referrer-Policy",
-											"value": "no-referrer"
-										},
-										{
-											"key": "Strict-Transport-Security",
-											"value": "max-age=15552000; includeSubDomains"
-										},
-										{
-											"key": "X-Content-Type-Options",
-											"value": "nosniff"
-										},
-										{
-											"key": "X-DNS-Prefetch-Control",
-											"value": "off"
-										},
-										{
-											"key": "X-Download-Options",
-											"value": "noopen"
-										},
-										{
-											"key": "X-Frame-Options",
-											"value": "SAMEORIGIN"
-										},
-										{
-											"key": "X-Permitted-Cross-Domain-Policies",
-											"value": "none"
-										},
-										{
-											"key": "X-XSS-Protection",
-											"value": "0"
-										},
-										{
-											"key": "Access-Control-Allow-Origin",
-											"value": "*"
-										},
-										{
-											"key": "Content-Type",
-											"value": "application/json; charset=utf-8"
-										},
-										{
-											"key": "Content-Length",
-											"value": "101"
-										},
-										{
-											"key": "ETag",
-											"value": "W/\"65-w8K9sef3s2f1jZeAnQgMnuKWxNE\""
-										},
-										{
-											"key": "Vary",
-											"value": "Accept-Encoding"
-										},
-										{
-											"key": "Date",
-											"value": "Sat, 15 Feb 2025 11:53:36 GMT"
-										},
-										{
-											"key": "Connection",
-											"value": "keep-alive"
-										},
-										{
-											"key": "Keep-Alive",
-											"value": "timeout=5"
-										}
-									],
-									"cookie": [],
-									"body": "{\n    \"code\": 201,\n    \"message\": \"Thank you for registering. Please verify your email\",\n    \"data\": {\n        \"attributes\": {}\n    }\n}"
-								}
-							]
-						},
-						{
-							"name": "Verify Email",
-							"request": {
-								"method": "POST",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\r\n    \"email\": \"ahanaf607307@gmail.com\",\r\n    \"code\": \"113110\"\r\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{url}}/api/v1/auth/verify-email",
-									"host": [
-										"{{url}}"
-									],
-									"path": [
-										"api",
-										"v1",
-										"auth",
-										"verify-email"
-									]
-								}
-							},
-							"response": [
-								{
-									"name": "Success",
-									"originalRequest": {
-										"method": "POST",
-										"header": [],
-										"body": {
-											"mode": "raw",
-											"raw": "{\r\n    \"email\": \"shadathossan3500@gmail.com\",\r\n    \"code\": \"177528\"\r\n}",
-											"options": {
-												"raw": {
-													"language": "json"
-												}
-											}
-										},
-										"url": {
-											"raw": "{{url}}/api/v1/auth/verify-email",
-											"host": [
-												"{{url}}"
-											],
-											"path": [
-												"api",
-												"v1",
-												"auth",
-												"verify-email"
-											]
-										}
-									},
-									"status": "OK",
-									"code": 200,
-									"_postman_previewlanguage": "json",
-									"header": [
-										{
-											"key": "Content-Security-Policy",
-											"value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
-										},
-										{
-											"key": "Cross-Origin-Opener-Policy",
-											"value": "same-origin"
-										},
-										{
-											"key": "Cross-Origin-Resource-Policy",
-											"value": "same-origin"
-										},
-										{
-											"key": "Origin-Agent-Cluster",
-											"value": "?1"
-										},
-										{
-											"key": "Referrer-Policy",
-											"value": "no-referrer"
-										},
-										{
-											"key": "Strict-Transport-Security",
-											"value": "max-age=15552000; includeSubDomains"
-										},
-										{
-											"key": "X-Content-Type-Options",
-											"value": "nosniff"
-										},
-										{
-											"key": "X-DNS-Prefetch-Control",
-											"value": "off"
-										},
-										{
-											"key": "X-Download-Options",
-											"value": "noopen"
-										},
-										{
-											"key": "X-Frame-Options",
-											"value": "SAMEORIGIN"
-										},
-										{
-											"key": "X-Permitted-Cross-Domain-Policies",
-											"value": "none"
-										},
-										{
-											"key": "X-XSS-Protection",
-											"value": "0"
-										},
-										{
-											"key": "Access-Control-Allow-Origin",
-											"value": "*"
-										},
-										{
-											"key": "Content-Type",
-											"value": "application/json; charset=utf-8"
-										},
-										{
-											"key": "Content-Length",
-											"value": "1012"
-										},
-										{
-											"key": "ETag",
-											"value": "W/\"3f4-QE6n6tT+ETl62FvZZUVTA14N1sY\""
-										},
-										{
-											"key": "Vary",
-											"value": "Accept-Encoding"
-										},
-										{
-											"key": "Date",
-											"value": "Sun, 16 Feb 2025 04:24:34 GMT"
-										},
-										{
-											"key": "Connection",
-											"value": "keep-alive"
-										},
-										{
-											"key": "Keep-Alive",
-											"value": "timeout=5"
-										}
-									],
-									"cookie": [],
-									"body": "{\n    \"code\": 200,\n    \"message\": \"Email Verified\",\n    \"data\": {\n        \"attributes\": {\n            \"user\": {\n                \"firstName\": \"Md. Shadat\",\n                \"lastName\": \"Hossain\",\n                \"fullName\": \"Md. Shadat Hossain\",\n                \"email\": \"shadathossan3500@gmail.com\",\n                \"image\": \"/uploads/users/user.png\",\n                \"role\": \"user\",\n                \"callingCode\": null,\n                \"phoneNumber\": null,\n                \"nidNumber\": null,\n                \"isNIDVerified\": null,\n                \"dataOfBirth\": null,\n                \"address\": null,\n                \"oneTimeCode\": null,\n                \"isProfileCompleted\": false,\n                \"createdAt\": \"2025-02-16T04:16:58.879Z\",\n                \"id\": \"67b166ba89ff5ba8358f3f07\"\n            },\n            \"tokens\": {\n                \"access\": {\n                    \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2N2IxNjZiYTg5ZmY1YmE4MzU4ZjNmMDciLCJpYXQiOjE3Mzk2Nzk4NzQsImV4cCI6MTc0MzIxOTU1NDE5MCwidHlwZSI6ImFjY2VzcyJ9.KzXaCXQpHPZAHZR4pxKAb4wCDMigYPi9nkd2M75exwI\",\n                    \"expires\": \"2025-03-09T00:24:34.316Z\"\n                },\n                \"refresh\": {\n                    \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIyMTA3LTA0LTA4VDA0OjI0OjM0LjMyNloiLCJpYXQiOjE3Mzk2Nzk4NzQsImV4cCI6MTczOTY3OTg3NCwiYWN0aXZpdHkiOiI2N2IxNjZiYTg5ZmY1YmE4MzU4ZjNmMDcifQ.SW-EqfntCa1Ug1VCfTqHkiRwRe6LUR_pW4-IIBJqOv4\",\n                    \"expires\": \"2107-04-08T04:24:34.326Z\"\n                }\n            }\n        }\n    }\n}"
-								}
-							]
-						},
-						{
 							"name": "Login",
 							"event": [
 								{
@@ -4479,7 +4982,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"email\": \"ahanaf607307@gmail.com\",\r\n    \"password\": \"1qazxcvb\",\r\n    \"fcmToken\": \"The firebase FCM token\" // // onlly uee for push notification / mobile focus *\r\n}",
+									"raw": "{\r\n    \"email\": \"admin@gmail.com\",\r\n    \"password\": \"1qazxcvb\",\r\n    \"fcmToken\": \"The firebase FCM token\" // // onlly uee for push notification / mobile focus *\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -6126,11 +6629,21 @@
 						{
 							"name": "Task Create",
 							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{accessToken}}",
+											"type": "string"
+										}
+									]
+								},
 								"method": "POST",
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"fullName\" : \"Ahanaf Mubasshir\",\r\n  \"email\": \"a@gmail.com\",\r\n  \"password\": \"1qazxcvb\"\r\n}\r\n",
+									"raw": "{\r\n  \"categoryId\": \"68fe72a2bd1d9918bc96d762\",\r\n  \"subCategoryId\": \"68fe72babd1d9918bc96d765\",\r\n  \"serviceId\": \"68fe740682deafff0c27f003\",\r\n  \"title\": \"Social Media Eng\",\r\n  \"status\": \"active\",\r\n  \"isDeleted\": false\r\n}\r\n\r\n",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -6138,15 +6651,15 @@
 									}
 								},
 								"url": {
-									"raw": "{{url}}/api/v1/auth/register",
+									"raw": "{{url}}/api/v1/tasks/create-task",
 									"host": [
 										"{{url}}"
 									],
 									"path": [
 										"api",
 										"v1",
-										"auth",
-										"register"
+										"tasks",
+										"create-task"
 									]
 								}
 							},
@@ -6271,11 +6784,21 @@
 						{
 							"name": "Task Category",
 							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{accessToken}}",
+											"type": "string"
+										}
+									]
+								},
 								"method": "POST",
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"fullName\" : \"Ahanaf Mubasshir\",\r\n  \"email\": \"a@gmail.com\",\r\n  \"password\": \"1qazxcvb\"\r\n}\r\n",
+									"raw": "{\r\n    \"category\" : \"Socail Media\"\r\n}\r\n",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -6283,15 +6806,16 @@
 									}
 								},
 								"url": {
-									"raw": "{{url}}/api/v1/auth/register",
+									"raw": "{{url}}/api/v1/tasks/category/create",
 									"host": [
 										"{{url}}"
 									],
 									"path": [
 										"api",
 										"v1",
-										"auth",
-										"register"
+										"tasks",
+										"category",
+										"create"
 									]
 								}
 							},
@@ -6430,7 +6954,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n  \"subCategory\": [\"Facebook\" , \"Tiktok\" , \"Instagram\"],\r\n  \"categoryId\": \"68fe61cddb9f71d4a77fbdd7\"\r\n}\r\n",
+									"raw": "{\r\n  \"subCategory\": [\"Facebook\", \"Tiktok\"],\r\n  \"categoryId\": \"68fe72a2bd1d9918bc96d762\"\r\n}\r\n",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -6586,7 +7110,163 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n  \"subCategory\": [\"Organic Like\" , \"Comments\" , \"Share\"],\r\n  \"categoryId\": \"68fe61cddb9f71d4a77fbdd7\"\r\n}\r\n",
+									"raw": "{\r\n  \"service\": [\"Organic Like\" , \"Comments\" , \"Share\"],\r\n  \"subCategoryId\": \"68fe72babd1d9918bc96d765\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/api/v1/tasks/category-service/create",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"tasks",
+										"category-service",
+										"create"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Success",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"firstName\": \"Md. Shadat\",\r\n    \"lastName\": \"Hossain\",\r\n    \"email\": \"shadathossan3500@gmail.com\",\r\n    \"password\": \"1qazxsw2\",\r\n    \"role\": \"user\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{url}}/api/v1/auth/register",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"auth",
+												"register"
+											]
+										}
+									},
+									"status": "Created",
+									"code": 201,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Security-Policy",
+											"value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+										},
+										{
+											"key": "Cross-Origin-Opener-Policy",
+											"value": "same-origin"
+										},
+										{
+											"key": "Cross-Origin-Resource-Policy",
+											"value": "same-origin"
+										},
+										{
+											"key": "Origin-Agent-Cluster",
+											"value": "?1"
+										},
+										{
+											"key": "Referrer-Policy",
+											"value": "no-referrer"
+										},
+										{
+											"key": "Strict-Transport-Security",
+											"value": "max-age=15552000; includeSubDomains"
+										},
+										{
+											"key": "X-Content-Type-Options",
+											"value": "nosniff"
+										},
+										{
+											"key": "X-DNS-Prefetch-Control",
+											"value": "off"
+										},
+										{
+											"key": "X-Download-Options",
+											"value": "noopen"
+										},
+										{
+											"key": "X-Frame-Options",
+											"value": "SAMEORIGIN"
+										},
+										{
+											"key": "X-Permitted-Cross-Domain-Policies",
+											"value": "none"
+										},
+										{
+											"key": "X-XSS-Protection",
+											"value": "0"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "101"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"65-w8K9sef3s2f1jZeAnQgMnuKWxNE\""
+										},
+										{
+											"key": "Vary",
+											"value": "Accept-Encoding"
+										},
+										{
+											"key": "Date",
+											"value": "Sat, 15 Feb 2025 11:53:36 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"code\": 201,\n    \"message\": \"Thank you for registering. Please verify your email\",\n    \"data\": {\n        \"attributes\": {}\n    }\n}"
+								}
+							]
+						},
+						{
+							"name": "Get Task Service",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{accessToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"service\": [\"Organic Like\" , \"Comments\" , \"Share\"],\r\n  \"subCategoryId\": \"68fe72babd1d9918bc96d765\"\r\n}\r\n",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -6727,6 +7407,9 @@
 						},
 						{
 							"name": "Get Tasks",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
 							"request": {
 								"auth": {
 									"type": "bearer",
@@ -6738,11 +7421,11 @@
 										}
 									]
 								},
-								"method": "POST",
+								"method": "GET",
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n  \"subCategory\": [\"Organic Like\" , \"Comments\" , \"Share\"],\r\n  \"categoryId\": \"68fe61cddb9f71d4a77fbdd7\"\r\n}\r\n",
+									"raw": "",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -6750,7 +7433,7 @@
 									}
 								},
 								"url": {
-									"raw": "{{url}}/api/v1/tasks/category-service/create",
+									"raw": "{{url}}/api/v1/tasks/get-all-tasks",
 									"host": [
 										"{{url}}"
 									],
@@ -6758,8 +7441,7 @@
 										"api",
 										"v1",
 										"tasks",
-										"category-service",
-										"create"
+										"get-all-tasks"
 									]
 								}
 							},
