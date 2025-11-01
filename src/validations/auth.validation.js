@@ -40,7 +40,7 @@ const register = {
     totalBalance: Joi.number().default(0),
     withdrawalHistory: Joi.array().items(Joi.object()).default([]),
     inviteLink: Joi.string().uri().allow(null, ''),
-    role: Joi.string().valid("buyer", "worker", "admin", "common" ).default("employee"),
+    role: Joi.string().valid("buyer", "worker", "admin", "common" ).default("employee").allow(null , ""),
 
     subscription: Joi.object({
       subscriptionId: Joi.string().allow(null),

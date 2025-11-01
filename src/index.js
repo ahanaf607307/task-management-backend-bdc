@@ -2,6 +2,7 @@ const mongoose = require("mongoose");
 const app = require("./app");
 const config = require("./config/config");
 const logger = require("./config/logger");
+const { seedAdmin } = require("./utils/seedAdmin");
 
 // My Local IP Address
 const myIp = process.env.BACKEND_IP;
@@ -20,6 +21,8 @@ mongoose.connect(config.mongoose.url, config.mongoose.options).then(async () => 
       logger.error("Error dropping index:", err);
     }
   }
+
+  await seedAdmin()
 
   server = app.listen(config.port, myIp, () => {
     // logger.info(`Listening to port ${config.port}`);
