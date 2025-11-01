@@ -1,8 +1,6 @@
 const { User } = require("../models");
 
-
-const bcryptjs  = require('bcryptjs')
-
+const bcryptjs = require("bcryptjs");
 const seedAdmin = async () => {
   try {
     const isSupperAdminExist = await User.findOne({
@@ -18,12 +16,14 @@ const seedAdmin = async () => {
       10
     );
 
+    console.log(hashedPassword)
+
     const payload = {
-      name: "Admin",
+      fullName: "Admin",
       email: "admin@gmail.com",
       password: hashedPassword,
       role: "admin",
-      isVerified: true,
+      isEmailVerified : true,
     };
     const Admin = await User.create(payload);
     console.log("Admin Created Successfully \n");
