@@ -7,6 +7,7 @@ const createTransaction = async (data) => {
     await Order.findByIdAndUpdate(
       data.orderId,
       { paymentStatus: "accepted" },
+      { orderStatus: "active" },
       { new: true }
     );
   }

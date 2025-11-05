@@ -22,7 +22,7 @@ mongoose.connect(config.mongoose.url, config.mongoose.options).then(async () => 
     }
   }
 
-  await seedAdmin()
+  // await seedAdmin()
 
   server = app.listen(config.port, myIp, () => {
     // logger.info(`Listening to port ${config.port}`);

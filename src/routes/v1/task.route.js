@@ -9,7 +9,7 @@ const { taskValidation } = require("../../validations");
 const TaskRouter = express.Router();
 
 TaskRouter.route("/create-task").post(auth("admin"),  taskController.createTask);
-TaskRouter.route("/get-all-tasks").get(auth(  "client"), taskController.getTasks);
+TaskRouter.route("/get-all-tasks").get(auth(  "common"), taskController.getTasks);
 // TaskRouter.route("/get-all-tasks").get(auth( "admin " || "client"), taskController.getTasks);
 
 
