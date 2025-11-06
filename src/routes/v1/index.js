@@ -11,6 +11,7 @@ const TaskServiceRouter = require("./task.service.route");
 const TaskSubCategoryRouter = require("./task.subCategory.route");
 const OrderRouter = require("./order.route");
 const TransactionRouter = require("./transaction.route");
+const EmployeeTaskRouter = require("./employeeTask.route");
 
 
 const router = express.Router();
@@ -55,6 +56,10 @@ const defaultRoutes = [
  {
     path: "/tasks/transaction",
     route: TransactionRouter,
+  },
+ {
+    path: "/tasks/claim-task",
+    route: EmployeeTaskRouter,
   },
 
 ];

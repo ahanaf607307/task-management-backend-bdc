@@ -7,6 +7,7 @@ module.exports.TaskSubCategory = require("./task.subCategory.model");
 module.exports.TaskService = require("./task.service.model");
 module.exports.OrderModel = require("./order.model");
 module.exports.TransactionModel = require("./transaction.model");
+module.exports.EmployeeTaskModel = require("./employeeTask.model");
 
 module.exports.Notification = require('./notification.model');
 module.exports.TermsAndCondition = require('./termsConditions.model');

@@ -5,6 +5,7 @@ const catchAsync = require("../utils/catchAsync");
 const response = require("../config/response");
 const { taskService } = require("../services");
 const { Tasks } = require("../models");
+const Employee = require("../models/employeeTask.model");
 
 const createTask = catchAsync(async (req, res) => {
 try {
@@ -33,7 +34,14 @@ try {
 
 const getTasks = async (req, res) => {
   try {
-    const tasks = await taskService.getAllTasksService();
+    const userEmail = req.user.email
+ 
+    const employeeEmail = await Employee.find()
+
+    console.log('employee  find from getTasks => ' , employeeEmail.id)
+
+
+    const tasks = await taskService.getAllTasksService(userEmail);
     res.status(200).json({
       success: true,
       data: tasks

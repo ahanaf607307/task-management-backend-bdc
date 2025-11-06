@@ -6,17 +6,20 @@ const usersData = [
   {
     "fullName" : "Employee",
   "email": "employee@gmail.com",
-  "password": "1qazxcvb"
+  "password": "1qazxcvb",
+   "isEmailVerified" : true,
 },
   {
     "fullName" : "Client Mubasshir",
   "email": "client@gmail.com",
-  "password": "1qazxcvb"
+  "password": "1qazxcvb",
+  "isEmailVerified" : true,
 },
 {
   "fullName" : "Admin",
     "email": "admin@gmail.com",
     "password": "1qazxcvb",
+     "isEmailVerified" : true,
 }
 
 ]
