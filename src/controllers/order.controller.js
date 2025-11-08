@@ -4,6 +4,7 @@ const ApiError = require("../utils/ApiError");
 const catchAsync = require("../utils/catchAsync");
 const response = require("../config/response");
 const { taskService, orderService } = require("../services");
+const Employee = require("../models/employeeTask.model");
 
 const createOrder = catchAsync(async (req, res) => {
 try {
@@ -33,7 +34,14 @@ try {
 
 const getOrder = async (req, res) => {
   try {
-    const orders = await orderService.getAllOrder();
+        const userId = req.user.id; 
+
+   
+    const claimedRecords = await Employee.find({ employeeId: userId }).select("taskId");
+
+    
+    const claimedTaskIds = claimedRecords.map((record) => record.taskId);
+    const orders = await orderService.getAllOrder(claimedTaskIds);
     res.status(200).json({
       success: true,
       message : "Order retrive successfully",

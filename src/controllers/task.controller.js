@@ -6,56 +6,52 @@ const response = require("../config/response");
 const { taskService } = require("../services");
 const { Tasks } = require("../models");
 const Employee = require("../models/employeeTask.model");
+const Task = require("../models/task.model");
 
 const createTask = catchAsync(async (req, res) => {
-try {
-    req.body.createdBy = req.user.id
+  try {
+    req.body.createdBy = req.user.id;
 
-  const tasks = await taskService.createTask(req.body);
-  res.status(httpStatus.CREATED).json(
-    response({
-      message: "Task created successfully",
-      status: "OK",
-      statusCode: httpStatus.CREATED,
-      data: tasks,
-    })
-  );
-} catch (error) {
-      res.status(httpStatus.BAD_REQUEST).json(
-    response({
-      message: "Task creating failed",
-      status: "NOT OK",
-      statusCode: httpStatus.BAD_REQUEST,
-    })
-  );
-}
-
+    const tasks = await taskService.createTask(req.body);
+    res.status(httpStatus.CREATED).json(
+      response({
+        message: "Task created successfully",
+        status: "OK",
+        statusCode: httpStatus.CREATED,
+        data: tasks,
+      })
+    );
+  } catch (error) {
+    res.status(httpStatus.BAD_REQUEST).json(
+      response({
+        message: "Task creating failed",
+        status: "NOT OK",
+        statusCode: httpStatus.BAD_REQUEST,
+      })
+    );
+  }
 });
 
 const getTasks = async (req, res) => {
   try {
-    const userEmail = req.user.email
- 
-    const employeeEmail = await Employee.find()
 
-    console.log('employee  find from getTasks => ' , employeeEmail.id)
+    const tasks = await taskService.getAllTasksService();
 
-
-    const tasks = await taskService.getAllTasksService(userEmail);
     res.status(200).json({
       success: true,
-      data: tasks
+      data: tasks,
     });
   } catch (error) {
-    console.error(error);
+    console.error("Error in getTasks:", error);
     res.status(500).json({
       success: false,
-      message: 'Server Error'
+      message: "Server Error",
     });
   }
 };
 
+
 module.exports = {
   createTask,
-getTasks
+  getTasks,
 };

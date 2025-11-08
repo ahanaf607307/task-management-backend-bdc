@@ -9,7 +9,6 @@ const createTask = async (data) => {
 
 const getAllTasksService = async () => {
 
-
   return await Tasks.find()
     .populate("createdBy", "name email")
     .populate("categoryId", "category")
