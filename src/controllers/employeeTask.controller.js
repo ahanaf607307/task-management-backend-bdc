@@ -36,7 +36,7 @@ const getEmployeeTask = async (req, res) => {
         const orders = await EmployeeTaskService.getAllClaimTask();
         res.status(200).json({
             success: true,
-            message: "Claim Task retrived successfully",
+            message: "Claim Task retrieved  successfully",
             data: orders
         });
     } catch (error) {

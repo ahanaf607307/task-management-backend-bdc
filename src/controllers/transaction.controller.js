@@ -37,7 +37,7 @@ const getTransactions = async (req, res) => {
     const transactions = await TransactionService.getTransactions();
     res.status(200).json({
       success: true,
-      message : "Transaction retrive successfully",
+      message : "Transaction retrieved  successfully",
       data: transactions
     });
   } catch (error) {

@@ -44,7 +44,7 @@ const getOrder = async (req, res) => {
     const orders = await orderService.getAllOrder(claimedTaskIds);
     res.status(200).json({
       success: true,
-      message : "Order retrive successfully",
+      message : "Order retrieved successfully",
       data: orders
     });
   } catch (error) {

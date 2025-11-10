@@ -36,7 +36,7 @@ try {
   const tasks = await taskServiceService.getTaskService();
   res.status(httpStatus.CREATED).json(
     response({
-      message: "Task service retrive successfully",
+      message: "Task service retrieved  successfully",
       status: "OK",
       statusCode: httpStatus.CREATED,
       data: tasks,
@@ -45,7 +45,7 @@ try {
 } catch (error) {
       res.status(httpStatus.BAD_REQUEST).json(
     response({
-      message: "Task service retrive failed",
+      message: "Task service retrieved  failed",
       status: "NOT OK",
       statusCode: httpStatus.BAD_REQUEST,
     })

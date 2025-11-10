@@ -7,7 +7,7 @@ const createOrder = async (data) => {
 const getAllOrder = async (claimedTaskIds) => {
   const order = await OrderModel.find({ _id: { $nin: claimedTaskIds } })
     .populate("taskId")
-    .populate("clientId")
+    .populate("clientId")   
     .populate("serviceId")
   return order;
 };
